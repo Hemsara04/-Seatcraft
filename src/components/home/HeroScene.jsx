@@ -3,14 +3,14 @@ import * as THREE from 'three';
 import gsap from 'gsap';
 
 const PALETTE = {
-  floor: 0xf3ebde,
-  cloth: 0xfffaf2,
-  clothEdge: 0xe9dcc6,
-  chair: 0x1f2a24,
-  chairAlt: 0xc8693f,
+  floor: 0xfbe6ed,
+  cloth: 0xfff6f9,
+  clothEdge: 0xf6d3df,
+  chair: 0x3a1f2b,
+  chairAlt: 0xd6457a,
   plate: 0xffffff,
-  gold: 0xc9a46a,
-  green: 0x6f8f72,
+  gold: 0xe2ad8f,
+  green: 0xeb9ab7,
 };
 
 function makeTable(radius, seats, accent) {
@@ -29,7 +29,7 @@ function makeTable(radius, seats, accent) {
   vase.position.y = 0.91;
   group.add(vase);
   for (let i = 0; i < 5; i += 1) {
-    const bloom = new THREE.Mesh(new THREE.SphereGeometry(0.07, 12, 12), new THREE.MeshStandardMaterial({ color: i % 2 ? accent : 0xf6d6c8, roughness: 0.6 }));
+    const bloom = new THREE.Mesh(new THREE.SphereGeometry(0.07, 12, 12), new THREE.MeshStandardMaterial({ color: i % 2 ? accent : 0xffd6e4, roughness: 0.6 }));
     const a = (i / 5) * Math.PI * 2;
     bloom.position.set(Math.cos(a) * 0.07, 1.06 + (i % 2) * 0.04, Math.sin(a) * 0.07);
     group.add(bloom);
@@ -95,7 +95,7 @@ export default function HeroScene() {
     camera.position.set(0, 9.5, 12);
     camera.lookAt(0, 0, 0);
 
-    scene.add(new THREE.HemisphereLight(0xfff6ea, 0xd9c7ae, 1.25));
+    scene.add(new THREE.HemisphereLight(0xfff4f7, 0xf0c7d5, 1.25));
     const sun = new THREE.DirectionalLight(0xffffff, 1.6);
     sun.position.set(5, 10, 6);
     sun.castShadow = true;
@@ -106,7 +106,7 @@ export default function HeroScene() {
     sun.shadow.camera.bottom = -9;
     sun.shadow.radius = 6;
     scene.add(sun);
-    const warm = new THREE.PointLight(0xffc89a, 12, 14);
+    const warm = new THREE.PointLight(0xffb3cc, 12, 14);
     warm.position.set(-3, 3, 2);
     scene.add(warm);
 
@@ -116,7 +116,7 @@ export default function HeroScene() {
     scene.add(floor);
 
     // Dance floor in the centre.
-    const dance = new THREE.Mesh(new THREE.BoxGeometry(2.6, 0.04, 2.6), new THREE.MeshStandardMaterial({ color: 0xe8d8bd, roughness: 0.25, metalness: 0.1 }));
+    const dance = new THREE.Mesh(new THREE.BoxGeometry(2.6, 0.04, 2.6), new THREE.MeshStandardMaterial({ color: 0xf6d9e3, roughness: 0.25, metalness: 0.1 }));
     dance.position.y = 0.02;
     dance.receiveShadow = true;
     scene.add(dance);

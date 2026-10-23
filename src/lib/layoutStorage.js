@@ -186,7 +186,7 @@ async function renderLayout(node, bounds, scale = 2) {
         pixelRatio,
         width: bounds.w,
         height: bounds.h,
-        backgroundColor: '#fffdf8',
+        backgroundColor: '#fffbfc',
         cacheBust: true,
         filter: (el) => !(el.classList && el.classList.contains('no-export')),
         style: { transform: `translate(${-bounds.x}px, ${-bounds.y}px)`, transformOrigin: '0 0' },
@@ -222,11 +222,11 @@ export async function exportPdf(node, { bounds, title, subtitle, name }) {
     const doc = new jsPDF({ orientation: pageW >= pageH ? 'landscape' : 'portrait', unit: 'pt', format: [pageW, pageH] });
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(20);
-    doc.setTextColor(31, 42, 36);
+    doc.setTextColor(58, 31, 43);
     doc.text(title || 'Seating plan', margin, margin + 18);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10);
-    doc.setTextColor(110, 102, 92);
+    doc.setTextColor(138, 107, 119);
     doc.text([subtitle, `Exported ${formatDate()}`].filter(Boolean).join('  ·  '), margin, margin + 38);
     doc.addImage(dataUrl, 'PNG', margin, margin + header, imgW, imgH);
     const filename = `${safeFileName(name)}-layout.pdf`;
@@ -257,12 +257,12 @@ export async function exportGuestListPdf(data, name) {
 
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(22);
-    doc.setTextColor(31, 42, 36);
+    doc.setTextColor(58, 31, 43);
     doc.text(data.event.name || 'Guest list', M, y + 8);
     y += 30;
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10);
-    doc.setTextColor(110, 102, 92);
+    doc.setTextColor(138, 107, 119);
     const seated = data.guests.filter((g) => g.tableId).length;
     doc.text(
       [data.event.date, data.event.venue, `${data.guests.length} guests · ${seated} seated`, `Exported ${formatDate()}`]
@@ -283,30 +283,30 @@ export async function exportGuestListPdf(data, name) {
 
     groups.forEach((group) => {
       ensure(48);
-      doc.setDrawColor(230, 222, 210);
+      doc.setDrawColor(240, 217, 223);
       doc.line(M, y, W - M, y);
       y += 20;
       doc.setFont('helvetica', 'bold');
       doc.setFontSize(13);
-      doc.setTextColor(31, 42, 36);
+      doc.setTextColor(58, 31, 43);
       doc.text(group.title, M, y);
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(10);
-      doc.setTextColor(192, 100, 63);
+      doc.setTextColor(214, 69, 122);
       doc.text(group.meta, W - M, y, { align: 'right' });
       y += 18;
       if (!group.guests.length) {
-        doc.setTextColor(150, 140, 128);
+        doc.setTextColor(173, 143, 155);
         doc.text('No guests seated', M + 12, y);
         y += 16;
       }
       group.guests.forEach((g) => {
         ensure(16);
-        doc.setTextColor(40, 36, 32);
+        doc.setTextColor(58, 31, 43);
         doc.setFontSize(10.5);
         const seatNo = g.tableId ? `${g.seat + 1}. ` : '• ';
         doc.text(`${seatNo}${g.name}`, M + 12, y);
-        doc.setTextColor(120, 112, 102);
+        doc.setTextColor(138, 107, 119);
         doc.setFontSize(9);
         const extra = [g.group, g.meal, statusLabel[g.rsvp]].filter(Boolean).join(' · ');
         doc.text(doc.splitTextToSize(extra, W / 2 - M)[0] ?? '', W - M, y, { align: 'right' });

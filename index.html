@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content="Seatcraft — plan the seating for your wedding, party or event. Drag tables, seat guests, track RSVPs and share your plan." />
-    <meta name="theme-color" content="#f7f2ea" />
+    <meta name="theme-color" content="#fdf3f5" />
     <script>
       // Set the theme before first paint so dark mode never flashes light.
       (function () {
@@ -13,7 +13,7 @@
         if (t !== 'light' && t !== 'dark') t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         document.documentElement.dataset.theme = t;
         var m = document.querySelector('meta[name="theme-color"]');
-        if (m && t === 'dark') m.setAttribute('content', '#121714');
+        if (m && t === 'dark') m.setAttribute('content', '#1a1015');
       })();
     </script>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

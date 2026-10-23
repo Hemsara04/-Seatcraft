@@ -4,7 +4,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
 const KEY = 'seatcraft:theme';
-const THEME_COLORS = { light: '#f7f2ea', dark: '#121714' };
+const THEME_COLORS = { light: '#fdf3f5', dark: '#1a1015' };
 
 function readStored() {
   try {

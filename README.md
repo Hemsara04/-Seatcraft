@@ -9,7 +9,7 @@ npm run build    # production build in dist/
 ```
 
 ## Pages
-- `/`: home page with a Three.js banquet scene in the hero, a pinned "Introducing Seatcraft" section where a velvet-and-brass chair assembles as you scroll (GSAP ScrollTrigger + Three.js), and an overview of the features.
+- `/`: home page with a Three.js banquet scene in the hero, a pinned "Introducing Seatcraft" section where a raspberry velvet and rose-gold chair assembles as you scroll (GSAP ScrollTrigger + Three.js), and an overview of the features.
 - Light and dark themes: follows the OS setting until you use the sun/moon toggle (remembered in the browser). Exports always render light for printing.
 - `/plan`: the planner. Floor canvas, guest list, RSVPs, templates, import/export, sharing and collaborators.
 

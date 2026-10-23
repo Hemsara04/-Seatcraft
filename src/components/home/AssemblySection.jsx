@@ -5,7 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const STEPS = [
-  { title: 'Lay the foundation', text: 'Sketch your venue. Drag round, rectangular and square tables onto an open canvas, rotate them and number them.', part: 'Walnut legs & brass feet' },
+  { title: 'Lay the foundation', text: 'Sketch your venue. Drag round, rectangular and square tables onto an open canvas, rotate them and number them.', part: 'Walnut legs & rose-gold feet' },
   { title: 'Give it a seat', text: 'Bring your people in. Type names, paste a list, or import the RSVP spreadsheet you already have.', part: 'Apron & seat base' },
   { title: 'Build the support', text: 'Track who’s confirmed, pending or declined. Group families together and note meals and dietary needs.', part: 'Channel-tufted back' },
   { title: 'Make it personal', text: 'Drag each guest onto a chair. Every table shows how full it is, so nobody is left standing.', part: 'Velvet cushion & card' },
@@ -144,7 +144,7 @@ export default function AssemblySection() {
       <dl className="assembly-hud" aria-hidden="true">
         <div><dt>assembly</dt><dd><span ref={pctRef}>000</span>%</dd></div>
         <div><dt>parts</dt><dd ref={partsRef}>00 / 22</dd></div>
-        <div><dt>stage</dt><dd ref={stageLabelRef}>01 — Walnut legs & brass feet</dd></div>
+        <div><dt>stage</dt><dd ref={stageLabelRef}>01 — Walnut legs & rose-gold feet</dd></div>
       </dl>
 
       <div className="assembly-hint" aria-hidden="true">

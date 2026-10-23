@@ -7,7 +7,7 @@ import gsap from 'gsap';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 
-export const STAGES = ['Walnut legs & brass feet', 'Apron & seat base', 'Channel-tufted back', 'Velvet cushion & card', 'Table for eight'];
+export const STAGES = ['Walnut legs & rose-gold feet', 'Apron & seat base', 'Channel-tufted back', 'Velvet cushion & card', 'Table for eight'];
 const TOTAL = 10; // timeline length in seconds; progress maps onto this
 const PART_DURATION = 1.6;
 const START_ROT_Y = -1.1; // chair's starting turn
@@ -27,16 +27,16 @@ function placeCardTexture() {
   c.width = 512;
   c.height = 256;
   const g = c.getContext('2d');
-  g.fillStyle = '#fbf6ec';
+  g.fillStyle = '#fff7f9';
   g.fillRect(0, 0, 512, 256);
-  g.strokeStyle = '#c9a46a';
+  g.strokeStyle = '#e8a3b8';
   g.lineWidth = 6;
   g.strokeRect(14, 14, 484, 228);
-  g.fillStyle = '#1f2a24';
+  g.fillStyle = '#3a1f2b';
   g.textAlign = 'center';
   g.font = 'italic 500 64px Fraunces, Georgia, serif';
   g.fillText('Ava Thompson', 256, 128);
-  g.fillStyle = '#a5502b';
+  g.fillStyle = '#b02e60';
   g.font = '600 28px Manrope, Helvetica, sans-serif';
   g.fillText('TABLE 1  ·  SEAT 3', 256, 184);
   const tex = new THREE.CanvasTexture(c);
@@ -77,20 +77,20 @@ export function createAssemblyScene(mount, { reducedMotion = false } = {}) {
   const lookTarget = new THREE.Vector3(0, 0.95, 0);
 
   /* ---------------------------------------------------------------- lights */
-  scene.add(new THREE.HemisphereLight(0x9fb3a6, 0x0d110f, 0.35));
-  const key = new THREE.SpotLight(0xffe2bf, 60, 20, 0.5, 0.6, 1.6);
+  scene.add(new THREE.HemisphereLight(0xd9a3b8, 0x140a0f, 0.35));
+  const key = new THREE.SpotLight(0xffe0ea, 60, 20, 0.5, 0.6, 1.6);
   key.position.set(3, 6.5, 3.5);
   key.target.position.set(0, 0.8, 0);
   scene.add(key, key.target);
-  const rim = new THREE.DirectionalLight(0x8fb2ff, 1.4);
+  const rim = new THREE.DirectionalLight(0xc9a7ff, 1.4);
   rim.position.set(-4, 3, -4);
   scene.add(rim);
-  const warm = new THREE.PointLight(0xff9a5c, 4, 6, 1.5);
+  const warm = new THREE.PointLight(0xff7aa8, 4, 6, 1.5);
   warm.position.set(-1.6, 1.4, 1.8);
   scene.add(warm);
 
   /* ---------------------------------------------------------------- floor */
-  const grid = new THREE.GridHelper(24, 48, 0x3c4a41, 0x222b26);
+  const grid = new THREE.GridHelper(24, 48, 0x4a3140, 0x2a1a22);
   grid.material.transparent = true;
   grid.material.opacity = 0.55;
   scene.add(grid);
@@ -106,7 +106,7 @@ export function createAssemblyScene(mount, { reducedMotion = false } = {}) {
   const chairShadow = blob(1.9, 0.9);
   const glow = new THREE.Mesh(
     new THREE.PlaneGeometry(5, 5),
-    new THREE.MeshBasicMaterial({ map: glowTexture('rgba(201,164,106,0.4)', 'rgba(201,164,106,0)', 'rgba(201,164,106,0.12)'), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }),
+    new THREE.MeshBasicMaterial({ map: glowTexture('rgba(240,128,168,0.38)', 'rgba(240,128,168,0)', 'rgba(240,128,168,0.11)'), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }),
   );
   glow.rotation.x = -Math.PI / 2;
   glow.position.y = 0.003;
@@ -116,7 +116,7 @@ export function createAssemblyScene(mount, { reducedMotion = false } = {}) {
   const rings = STAGES.slice(0, 4).map(() => {
     const ring = new THREE.Mesh(
       new THREE.RingGeometry(0.98, 1, 96),
-      new THREE.MeshBasicMaterial({ color: 0xe8c48a, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false }),
+      new THREE.MeshBasicMaterial({ color: 0xf6a9c4, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false }),
     );
     ring.rotation.x = -Math.PI / 2;
     ring.position.y = 0.006;
@@ -137,7 +137,7 @@ export function createAssemblyScene(mount, { reducedMotion = false } = {}) {
   dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
   const dust = new THREE.Points(
     dustGeo,
-    new THREE.PointsMaterial({ color: 0xe8c48a, size: 0.025, transparent: true, opacity: 0.55, depthWrite: false, blending: THREE.AdditiveBlending }),
+    new THREE.PointsMaterial({ color: 0xf6a9c4, size: 0.025, transparent: true, opacity: 0.55, depthWrite: false, blending: THREE.AdditiveBlending }),
   );
   scene.add(dust);
 
@@ -147,13 +147,13 @@ export function createAssemblyScene(mount, { reducedMotion = false } = {}) {
   rig.add(chair);
   scene.add(rig);
 
-  // Premium finishes: brushed brass, lacquered walnut and emerald velvet (sheen gives the soft pile highlight).
-  const brass = new THREE.MeshStandardMaterial({ color: 0xd8b06a, metalness: 1, roughness: 0.2, envMapIntensity: 1.3 });
+  // Premium finishes: rose gold, lacquered walnut and raspberry velvet (sheen gives the soft pile highlight).
+  const brass = new THREE.MeshStandardMaterial({ color: 0xe9b49e, metalness: 1, roughness: 0.2, envMapIntensity: 1.3 });
   const walnut = new THREE.MeshPhysicalMaterial({ color: 0x3d2416, roughness: 0.38, clearcoat: 0.7, clearcoatRoughness: 0.22 });
-  const velvet = new THREE.MeshPhysicalMaterial({ color: 0x14392c, roughness: 0.8, sheen: 1, sheenRoughness: 0.45, sheenColor: new THREE.Color(0x4f9a7d) });
-  const velvetDeep = new THREE.MeshPhysicalMaterial({ color: 0x0f2c22, roughness: 0.85, sheen: 1, sheenRoughness: 0.5, sheenColor: new THREE.Color(0x3d7f66), side: THREE.DoubleSide });
+  const velvet = new THREE.MeshPhysicalMaterial({ color: 0x7a2445, roughness: 0.8, sheen: 1, sheenRoughness: 0.45, sheenColor: new THREE.Color(0xf59ab9) });
+  const velvetDeep = new THREE.MeshPhysicalMaterial({ color: 0x5c1a34, roughness: 0.85, sheen: 1, sheenRoughness: 0.5, sheenColor: new THREE.Color(0xc4668c), side: THREE.DoubleSide });
   const cardMat = new THREE.MeshStandardMaterial({ map: placeCardTexture(), roughness: 0.6 });
-  const lineMat = new THREE.LineBasicMaterial({ color: 0xe8c48a, transparent: true });
+  const lineMat = new THREE.LineBasicMaterial({ color: 0xf6a9c4, transparent: true });
 
   const parts = [];
   const explode = rng(42);
@@ -246,7 +246,7 @@ export function createAssemblyScene(mount, { reducedMotion = false } = {}) {
     fadeMats.push({ mat, max });
     return mat;
   };
-  const cloth = new THREE.MeshStandardMaterial({ color: 0xd9cdb9, roughness: 0.95, envMapIntensity: 0.5 });
+  const cloth = new THREE.MeshStandardMaterial({ color: 0xf0d3dd, roughness: 0.95, envMapIntensity: 0.5 });
   const tableTop = new THREE.Mesh(cyl(1.0, 1.0, 0.06, 64), fade(cloth));
   tableTop.position.set(tableCenter.x, 1.42, tableCenter.z);
   const skirt = new THREE.Mesh(new THREE.CylinderGeometry(1.0, 1.08, 1.4, 64, 1, true), fade(cloth));
